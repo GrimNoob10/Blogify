@@ -1,0 +1,30 @@
+{% extends "main.html" %} 
+{% load static %}
+{% load socialaccount %} 
+
+{% block content %}
+
+    <h3>Login User</h3>
+    {% csrf_token %}
+    <form  method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Login</button>
+    </form>
+
+    {% for message  in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+
+     
+    {% comment %} <h2>Google Login</h2>
+    <a href="{% provider_login_url 'google'%}?next=/userinterface">
+      Login with Google
+    </a> {% endcomment %}
+
+    <br>
+    <form action="{% url 'logout' %}" method="post" >
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+
+{% endblock content %}

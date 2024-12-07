@@ -1,0 +1,15 @@
+{% extends "main.html" %} 
+{% load static %}
+{% block content %}
+<h3>Register as a new User</h3>
+
+<form action="{% url "login" %}" method="post">
+  {% csrf_token %} {{form.as_p}}
+  <button type="submit">Submit</button>
+</form>
+
+<p>Already Registered?</p>
+<a href="{% url "login" %}">Login</a>
+<button id = "alreadyRegistered" onclick = "window.location.href = '{% url "login" %}'">Login</button>
+
+{% endblock content %}
